@@ -18,7 +18,7 @@ export default function CategoryIndex() {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/categories"
+          "https://beckendnetflix-production.up.railway.app/categories"
         );
         const data = await response.json();
 
