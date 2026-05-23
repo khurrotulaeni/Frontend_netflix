@@ -14,7 +14,6 @@ export default function EventEdit() {
   const [categoryId, setCategoryId] = useState("");
   const [pembicaraId, setPembicaraId] = useState("");
 
-  // FETCH DETAIL EVENT
   useEffect(() => {
 
     const fetchEvent = async () => {
@@ -22,7 +21,7 @@ export default function EventEdit() {
       try {
 
         const response = await fetch(
-          `http://localhost:3000/events/${id}`
+          `https://beckendnetflix-production.up.railway.app/events/${id}`
         );
 
         const data = await response.json();
@@ -68,7 +67,7 @@ export default function EventEdit() {
     try {
 
       const response = await fetch(
-        `http://localhost:3000/events/${id}`,
+        `https://beckendnetflix-production.up.railway.app/events/${id}`,
         {
           method: "PUT",
 

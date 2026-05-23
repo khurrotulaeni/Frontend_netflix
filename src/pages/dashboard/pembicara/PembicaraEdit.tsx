@@ -11,7 +11,6 @@ export default function PembicaraEdit() {
   const [role, setRole] = useState("");
   const [image, setImage] = useState("");
 
-  // FETCH DETAIL PEMBICARA
   useEffect(() => {
 
     const fetchPembicara = async () => {
@@ -19,7 +18,7 @@ export default function PembicaraEdit() {
       try {
 
         const response = await fetch(
-          `http://localhost:3000/pembicara/${id}`
+          `https://beckendnetflix-production.up.railway.app/pembicara/${id}`
         );
 
         const data = await response.json();
@@ -55,7 +54,7 @@ export default function PembicaraEdit() {
     try {
 
       const response = await fetch(
-        `http://localhost:3000/pembicara/${id}`,
+        `https://beckendnetflix-production.up.railway.app/pembicara/${id}`,
         {
           method: "PUT",
 
