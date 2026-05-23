@@ -10,7 +10,6 @@ export default function PembicaraIndex() {
   useEffect(() => {
     const fetchPembicara = async () => {
       try {
-        
         const response = await fetch(
           "https://beckendnetflix-production.up.railway.app/pembicara"
         );
@@ -49,10 +48,23 @@ export default function PembicaraIndex() {
                 key={p.id}
                 className="bg-zinc-900 p-4 rounded-lg flex justify-between items-center"
               >
-                <div>
-                  <h2 className="text-lg font-semibold">{p.name}</h2>
-                  <p className="text-sm text-gray-400">{p.role}</p>
+               
+                <div className="flex items-center gap-4">
+                  <img 
+                    src={p.image || "https://via.placeholder.com/150"} 
+                    alt={p.name} 
+                    className="w-16 h-16 object-cover rounded-full bg-zinc-800"
+                    onError={(e: any) => {
+                     
+                      e.target.src = "https://via.placeholder.com/150";
+                    }}
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold">{p.name}</h2>
+                    <p className="text-sm text-gray-400">{p.role}</p>
+                  </div>
                 </div>
+                {/* -------------------------------------------------------- */}
 
                 <div className="flex gap-2">
                   <Link
