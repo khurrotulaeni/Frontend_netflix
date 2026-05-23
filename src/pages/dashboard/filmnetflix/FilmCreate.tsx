@@ -52,7 +52,6 @@ export default function FilmCreate() {
 
       const data = await response.json();
 
-      // MASUKKAN KE ZUSTAND
       addMovie(data);
 
       alert("Film berhasil ditambahkan!");

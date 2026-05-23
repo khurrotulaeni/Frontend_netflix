@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEventStore } from "../../../store/useEventStore";
 
 export default function EventCreate() {
   const navigate = useNavigate();
@@ -12,27 +11,36 @@ export default function EventCreate() {
   const [categoryId, setCategoryId] = useState("");
   const [pembicaraId, setPembicaraId] = useState("");
 
-  const addEvent = useEventStore((state) => state.addEvent);
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     try {
-      await addEvent({
-        title,
-        dateEvent,
-        location,
-        description,
-        categoryId: Number(categoryId),
-        pembicaraId: Number(pembicaraId),
+
+      const response = await fetch("https://beckendnetflix-production.up.railway.app/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          dateEvent,
+          location,
+          description,
+          categoryId: Number(categoryId),
+          pembicaraId: Number(pembicaraId),
+        }),
       });
 
-      alert("Event berhasil ditambahkan!");
-
-      navigate("/dashboard/event");
+      if (response.ok) {
+        alert("Event berhasil ditambahkan ke Railway!");
+        navigate("/dashboard/event");
+      } else {
+        alert("Gagal menambahkan event ke server");
+      }
 
     } catch (error) {
       console.log("Gagal tambah event", error);
+      alert("Terjadi kesalahan koneksi ke server");
     }
   }
 

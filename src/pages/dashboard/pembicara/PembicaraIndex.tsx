@@ -51,12 +51,12 @@ export default function PembicaraIndex() {
                
                 <div className="flex items-center gap-4">
                   <img 
-                    src={p.image || "https://via.placeholder.com/150"} 
+                    src={p.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QMIeKPROE2T0kipLp5oLAEcygEoB-ZLP-g&s"} 
                     alt={p.name} 
                     className="w-16 h-16 object-cover rounded-full bg-zinc-800"
                     onError={(e: any) => {
                      
-                      e.target.src = "https://via.placeholder.com/150";
+                      e.target.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QMIeKPROE2T0kipLp5oLAEcygEoB-ZLP-g&s";
                     }}
                   />
                   <div>
@@ -64,7 +64,6 @@ export default function PembicaraIndex() {
                     <p className="text-sm text-gray-400">{p.role}</p>
                   </div>
                 </div>
-                {/* -------------------------------------------------------- */}
 
                 <div className="flex gap-2">
                   <Link

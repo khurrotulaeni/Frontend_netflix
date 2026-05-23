@@ -23,9 +23,8 @@ export default function CategoryCreate() {
     try {
       setLoading(true);
 
-      // 🔥 POST KE BACKEND
       const response = await fetch(
-        "http://localhost:3000/categories",
+        "https://beckendnetflix-production.up.railway.app/categories",
         {
           method: "POST",
           headers: {
