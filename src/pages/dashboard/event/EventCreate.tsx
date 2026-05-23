@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function EventCreate() {
@@ -11,11 +11,39 @@ export default function EventCreate() {
   const [categoryId, setCategoryId] = useState("");
   const [pembicaraId, setPembicaraId] = useState("");
 
+  // --- STATE BARU UNTUK MENAMPUNG LIST DROPDOWN ---
+  const [categories, setCategories] = useState<any[]>([]);
+  const [pembicaraList, setPembicaraList] = useState<any[]>([]);
+
+  // --- FETCH DATA UNTUK ISI DROPDOWN ---
+  useEffect(() => {
+    const fetchDropdownData = async () => {
+      try {
+        // Fetch data Category
+        const resCategory = await fetch("https://beckendnetflix-production.up.railway.app/categories");
+        if (resCategory.ok) {
+          const dataCat = await resCategory.json();
+          setCategories(dataCat);
+        }
+
+        // Fetch data Pembicara
+        const resPembicara = await fetch("https://beckendnetflix-production.up.railway.app/pembicara");
+        if (resPembicara.ok) {
+          const dataPem = await resPembicara.json();
+          setPembicaraList(dataPem);
+        }
+      } catch (error) {
+        console.log("Gagal memuat data dropdown", error);
+      }
+    };
+
+    fetchDropdownData();
+  }, []);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     try {
-
       const response = await fetch("https://beckendnetflix-production.up.railway.app/events", {
         method: "POST",
         headers: {
@@ -80,21 +108,33 @@ export default function EventCreate() {
           className="w-full p-3 rounded bg-zinc-800"
         />
 
-        <input
-          type="number"
-          placeholder="Category ID"
+        {/* --- DROPDOWN CATEGORY (MENGGANTIKAN INPUT NUMBER) --- */}
+        <select
           value={categoryId}
           onChange={(e) => setCategoryId(e.target.value)}
-          className="w-full p-3 rounded bg-zinc-800"
-        />
+          className="w-full p-3 rounded bg-zinc-800 text-gray-300"
+        >
+          <option value="">-- Pilih Kategori --</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
 
-        <input
-          type="number"
-          placeholder="Pembicara ID"
+        {/* --- DROPDOWN PEMBICARA (MENGGANTIKAN INPUT NUMBER) --- */}
+        <select
           value={pembicaraId}
           onChange={(e) => setPembicaraId(e.target.value)}
-          className="w-full p-3 rounded bg-zinc-800"
-        />
+          className="w-full p-3 rounded bg-zinc-800 text-gray-300"
+        >
+          <option value="">-- Pilih Pembicara --</option>
+          {pembicaraList.map((pembicara) => (
+            <option key={pembicara.id} value={pembicara.id}>
+              {pembicara.name} ({pembicara.role})
+            </option>
+          ))}
+        </select>
 
         <button
           type="submit"
