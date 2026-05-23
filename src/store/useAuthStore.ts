@@ -10,7 +10,6 @@ interface AuthState{
     login: (userName: string) => void;
     logout: () => void;
     addCategory: (name: string) => void;
-
     removeCategory: (name: string) => void;
 }
 

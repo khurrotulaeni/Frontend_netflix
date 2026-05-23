@@ -29,13 +29,13 @@ export const useEventStore = create<EventState>()(
       setEvents: (events) => set({ events }),
 
       fetchEvents: async () => {
-        const res = await fetch("http://localhost:3000/events");
+        const res = await fetch("https://beckendnetflix-production.up.railway.app/events");
         const data = await res.json();
         set({ events: data });
       },
 
       addEvent: async (data) => {
-        await fetch("http://localhost:3000/events", {
+        await fetch("https://beckendnetflix-production.up.railway.app/events", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const useEventStore = create<EventState>()(
       },
 
       updateEvent: async (id, data) => {
-        await fetch(`http://localhost:3000/events/${id}`, {
+        await fetch(`https://beckendnetflix-production.up.railway.app/events/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export const useEventStore = create<EventState>()(
       },
 
       removeEvent: async (id) => {
-        await fetch(`http://localhost:3000/events/${id}`, {
+        await fetch(`https://beckendnetflix-production.up.railway.app/events/${id}`, {
           method: "DELETE",
         });
 
@@ -68,7 +68,7 @@ export const useEventStore = create<EventState>()(
     }),
     {
       name: "event-storage",
-      partialize: (state) => ({ events: state.events }), // 🔥 FIX PERSIST BUG
+      partialize: (state) => ({ events: state.events }),
     }
   )
 );

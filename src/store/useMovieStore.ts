@@ -12,11 +12,9 @@ interface MovieState {
 
   movies: Movie[];
 
-  // TAMBAHAN
+
   setMovies: (movies: Movie[]) => void;
-
   addMovie: (movie: Movie) => void;
-
   removeMovie: (id: number) => void;
 
 }
