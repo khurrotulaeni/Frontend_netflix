@@ -41,8 +41,10 @@ export default function PembicaraCreate() {
 
       const data = await response.json();
 
+      
+
       // masukin ke store
-      addPembicara(data);
+      addPembicara(data.pembicara || data);
 
       // pindah ke index
       navigate("/dashboard/pembicara");
