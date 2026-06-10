@@ -29,7 +29,7 @@ export default function PembicaraCreate() {
 
     try {
       const response = await fetch(
-        "https://beckendnetflix-production.up.railway.app/pembicara",
+        "http://localhost:3000/pembicara",
         {
           method: "POST",
           headers: {

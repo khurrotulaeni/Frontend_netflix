@@ -15,7 +15,7 @@ export default function UserEdit() {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          `https://beckendnetflix-production.up.railway.app/users/${id}`
+          `http://localhost:3000/users/${id}`
         );
 
         const data = await response.json();
@@ -43,7 +43,7 @@ export default function UserEdit() {
 
     try {
       const response = await fetch(
-        `https://beckendnetflix-production.up.railway.app/users/${id}`,
+        `http://localhost:3000/users/${id}`,
         {
           method: "PUT",
 

@@ -29,13 +29,13 @@ export const useEventStore = create<EventState>()(
       setEvents: (events) => set({ events }),
 
       fetchEvents: async () => {
-        const res = await fetch("https://beckendnetflix-production.up.railway.app/events");
+        const res = await fetch("http://localhost:3000/events");
         const data = await res.json();
         set({ events: data });
       },
 
       addEvent: async (data) => {
-        await fetch("https://beckendnetflix-production.up.railway.app/events", {
+        await fetch("http://localhost:3000/events", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const useEventStore = create<EventState>()(
       },
 
       updateEvent: async (id, data) => {
-        await fetch(`https://beckendnetflix-production.up.railway.app/events/${id}`, {
+        await fetch(`http://localhost:3000/events/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ export const useEventStore = create<EventState>()(
       },
 
       removeEvent: async (id) => {
-        await fetch(`https://beckendnetflix-production.up.railway.app/events/${id}`, {
+        await fetch(`http://localhost:3000/events/${id}`, {
           method: "DELETE",
         });
 

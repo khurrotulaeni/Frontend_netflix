@@ -30,7 +30,7 @@ export default function UserCreate() {
 
     try {
       const response = await fetch(
-        "https://beckendnetflix-production.up.railway.app/users",
+        "http://localhost:3000/users",
         {
           method: "POST",
           headers: {

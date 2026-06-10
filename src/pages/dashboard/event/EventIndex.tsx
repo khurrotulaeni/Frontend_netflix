@@ -12,7 +12,7 @@ export default function EventIndex() {
       try {
 
         const response = await fetch(
-          "https://beckendnetflix-production.up.railway.app/events"
+          "http://localhost:3000/events"
         );
         const data = await response.json();
 

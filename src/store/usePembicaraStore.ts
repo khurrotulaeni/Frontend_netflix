@@ -18,7 +18,7 @@ interface PembicaraState {
   removePembicara: (id: number) => void;
 }
 
-const API_URL = "https://beckendnetflix-production.up.railway.app/pembicara";
+const API_URL = "http://localhost:3000/pembicara";
 
 export const usePembicaraStore =
   create<PembicaraState>()(

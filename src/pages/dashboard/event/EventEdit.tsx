@@ -21,7 +21,7 @@ export default function EventEdit() {
       try {
 
         const response = await fetch(
-          `https://beckendnetflix-production.up.railway.app/events/${id}`
+          `http://localhost:3000/events/${id}`
         );
 
         const data = await response.json();
@@ -67,7 +67,7 @@ export default function EventEdit() {
     try {
 
       const response = await fetch(
-        `https://beckendnetflix-production.up.railway.app/events/${id}`,
+        `http://localhost:3000/events/${id}`,
         {
           method: "PUT",
 

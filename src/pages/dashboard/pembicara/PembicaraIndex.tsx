@@ -11,7 +11,7 @@ export default function PembicaraIndex() {
     const fetchPembicara = async () => {
       try {
         const response = await fetch(
-          "https://beckendnetflix-production.up.railway.app/pembicara"
+          "http://localhost:3000/pembicara"
         );
         const data = await response.json();
 

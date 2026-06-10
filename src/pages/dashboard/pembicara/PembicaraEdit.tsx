@@ -18,7 +18,7 @@ export default function PembicaraEdit() {
       try {
 
         const response = await fetch(
-          `https://beckendnetflix-production.up.railway.app/pembicara/${id}`
+          `http://localhost:3000/pembicara/${id}`
         );
 
         const data = await response.json();
@@ -54,7 +54,7 @@ export default function PembicaraEdit() {
     try {
 
       const response = await fetch(
-        `https://beckendnetflix-production.up.railway.app/pembicara/${id}`,
+        `http://localhost:3000/pembicara/${id}`,
         {
           method: "PUT",
 

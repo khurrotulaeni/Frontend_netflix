@@ -18,14 +18,14 @@ export default function EventCreate() {
     const fetchDropdownData = async () => {
       try {
       
-        const resCategory = await fetch("https://beckendnetflix-production.up.railway.app/category");
+        const resCategory = await fetch("http://localhost:3000/categories");
         if (resCategory.ok) {
           const dataCat = await resCategory.json();
           setCategories(dataCat);
         }
 
         // Fetch data Pembicara
-        const resPembicara = await fetch("https://beckendnetflix-production.up.railway.app/pembicara");
+        const resPembicara = await fetch("http://localhost:3000/pembicara");
         if (resPembicara.ok) {
           const dataPem = await resPembicara.json();
           setPembicaraList(dataPem);
@@ -42,7 +42,7 @@ export default function EventCreate() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://beckendnetflix-production.up.railway.app/events", {
+      const response = await fetch("http://localhost:3000/events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

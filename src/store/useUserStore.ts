@@ -19,7 +19,7 @@ interface UserState {
   removeUser: (id: number) => void;
 }
 
-const API_URL ="https://beckendnetflix-production.up.railway.app/users";
+const API_URL ="http://localhost:3000/users";
 
 export const useUserStore =
   create<UserState>()(

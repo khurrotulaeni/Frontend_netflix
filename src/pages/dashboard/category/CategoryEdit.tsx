@@ -9,7 +9,7 @@ export default function CategoryEdit() {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const res = await fetch(`https://beckendnetflix-production.up.railway.app/categories/${id}`);
+      const res = await fetch(`http://localhost:3000/categories/${id}`);
       const data = await res.json();
       setName(data.name);
     };
@@ -20,7 +20,7 @@ export default function CategoryEdit() {
   const handleUpdate = async (e: any) => {
     e.preventDefault();
 
-    await fetch(`https://beckendnetflix-production.up.railway.app/categories/${id}`, {
+    await fetch(`http://localhost:3000/categories/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -25,14 +25,14 @@ export const useCategoryStore = create<CategoryState>()(
 
       // GET DATA
       fetchCategories: async () => {
-        const res = await fetch("https://beckendnetflix-production.up.railway.app/categories");
+        const res = await fetch("http://localhost:3000/categories");
         const data = await res.json();
         set({ categories: data });
       },
 
       // ADD CATEGORY
       addCategory: async (name) => {
-        await fetch("https://beckendnetflix-production.up.railway.app/categories", {
+        await fetch("http://localhost:3000/categories", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const useCategoryStore = create<CategoryState>()(
       // DELETE CATEGORY
       removeCategory: async (id) => {
         await fetch(
-          `https://beckendnetflix-production.up.railway.app/categories/${id}`,
+          `http://localhost:3000/categories/${id}`,
           {
             method: "DELETE",
           }
