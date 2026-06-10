@@ -19,7 +19,7 @@ interface UserState {
   removeUser: (id: number) => void;
 }
 
-const API_URL ="http://localhost:3000/users";
+const API_URL = "http://localhost:3000/users";
 
 export const useUserStore =
   create<UserState>()(
@@ -37,10 +37,7 @@ export const useUserStore =
               set({ users: data });
             }
           } catch (error) {
-            console.error(
-              "Gagal mengambil data user:",
-              error
-            );
+            console.error("Gagal mengambil data user:", error);
           }
         },
 
@@ -52,12 +49,19 @@ export const useUserStore =
             users: [...state.users, item],
           })),
 
-        removeUser: (id) =>
-          set((state) => ({
-            users: state.users.filter(
-              (u) => u.id !== id
-            ),
-          })),
+        removeUser: async (id: number) => {
+          try {
+            await fetch(`${API_URL}/${id}`, {
+              method: "DELETE",
+            });
+
+            set((state) => ({
+              users: state.users.filter((u) => u.id !== id),
+            }));
+          } catch (error) {
+            console.log("Gagal hapus user", error);
+          }
+        },
       }),
       {
         name: "user-storage",
