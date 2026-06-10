@@ -42,7 +42,7 @@ export default function UserCreate() {
 
       const data = await response.json();
 
-      addUser(data);
+      addUser(data.user || data);
 
       navigate("/dashboard/users");
     } catch (error) {

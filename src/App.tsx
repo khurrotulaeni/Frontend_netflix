@@ -70,7 +70,7 @@ function App() {
           <Route path="/dashboard/filmnetflix/create" element={<FilmCreate />} />
           <Route path="/dashboard/filmnetflix/edit/:id" element={<FilmEdit />} />
 
-          {/* Event Management */}
+          {/* Event Management */} 
           <Route path="/dashboard/event" element={<EventIndex />} />
           <Route path="/dashboard/event/create" element={<EventCreate />} />
           <Route path="/dashboard/event/edit/:id" element={<EventEdit />} />
