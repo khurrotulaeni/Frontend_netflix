@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
 import { useState } from "react"; 
-import { Home, Folder, Film, Calendar, Search, Bell, User, } from "lucide-react";
+import { Home, Folder, Film, Calendar, Search, Bell, User, Mic, UserCircle, Users, } from "lucide-react";
 
 export default function DashboardLayout() {
   const logout = useAuthStore((state) => state.logout);
@@ -19,8 +19,9 @@ export default function DashboardLayout() {
     { name: "Category", path: "/dashboard/category", icon: Folder },
     { name: "Film Netflix", path: "/dashboard/filmnetflix", icon: Film },
     { name: "Event", path: "/dashboard/event", icon: Calendar },
-    { name: "Pembicara", path: "/dashboard/pembicara", icon: User },
-    { name: "Biodata", path: "/dashboard/biodata", icon: User },
+    { name: "Pembicara", path: "/dashboard/pembicara", icon: Mic },
+    { name: "User", path: "/dashboard/users", icon: Users },
+    { name: "Biodata", path: "/dashboard/biodata", icon: UserCircle },
   ];
 
   const location = useLocation();
@@ -41,7 +42,9 @@ export default function DashboardLayout() {
     if (location.pathname.includes("/pembicara")) {
       return "Pembicara";
     }
-    return "Dashboard";
+    if (location.pathname.includes("/users")) {
+      return "Users";
+    }
   };
 
   return (

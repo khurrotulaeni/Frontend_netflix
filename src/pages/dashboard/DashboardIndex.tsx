@@ -4,6 +4,7 @@ import { useMovieStore } from "../../store/useMovieStore";
 import { useCategoryStore } from "../../store/useCategoryStore";
 import { useEventStore } from "../../store/useEventStore";
 import { usePembicaraStore } from "../../store/usePembicaraStore";
+import { useUserStore } from "../../store/useUserStore";
 
 export default function DashboardIndex() {
 
@@ -23,12 +24,20 @@ export default function DashboardIndex() {
     (state) => state.pembicara
   ) || [];
 
+  const users = useUserStore(
+    (state) => state.users
+  ) || [];
+
   const setEvents = useEventStore(
     (state) => state.setEvents
   );
 
   const setPembicara = usePembicaraStore(
     (state) => state.setPembicara
+  );
+
+  const setUsers = useUserStore(
+    (state) => state.setUsers
   );
 
   // FETCH EVENT
@@ -99,6 +108,40 @@ export default function DashboardIndex() {
 
   }, []);
 
+  // FETCH USER
+  useEffect(() => {
+
+    const fetchUsers = async () => {
+
+      try {
+
+        const response = await fetch(
+          "https://beckendnetflix-production.up.railway.app/users"
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        if (Array.isArray(data)) {
+          setUsers(data);
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Gagal fetch user",
+          error
+        );
+
+      }
+
+    };
+
+    fetchUsers();
+
+  }, []);
+
   const stats = [
     {
       title: "Total Movies",
@@ -115,6 +158,10 @@ export default function DashboardIndex() {
     {
       title: "Pembicara",
       total: pembicara.length,
+    },
+    {
+      title: "Users",
+      total: users.length,
     },
   ];
 
@@ -133,7 +180,7 @@ export default function DashboardIndex() {
 
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mb-10">
 
         {stats.map((item, index) => (
 

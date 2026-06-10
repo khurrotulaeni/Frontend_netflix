@@ -11,16 +11,14 @@ export default function EventCreate() {
   const [categoryId, setCategoryId] = useState("");
   const [pembicaraId, setPembicaraId] = useState("");
 
-  // --- STATE BARU UNTUK MENAMPUNG LIST DROPDOWN ---
   const [categories, setCategories] = useState<any[]>([]);
   const [pembicaraList, setPembicaraList] = useState<any[]>([]);
 
-  // --- FETCH DATA UNTUK ISI DROPDOWN ---
   useEffect(() => {
     const fetchDropdownData = async () => {
       try {
-        // Fetch data Category
-        const resCategory = await fetch("https://beckendnetflix-production.up.railway.app/categories");
+      
+        const resCategory = await fetch("https://beckendnetflix-production.up.railway.app/category");
         if (resCategory.ok) {
           const dataCat = await resCategory.json();
           setCategories(dataCat);
@@ -108,7 +106,6 @@ export default function EventCreate() {
           className="w-full p-3 rounded bg-zinc-800"
         />
 
-        {/* --- DROPDOWN CATEGORY (MENGGANTIKAN INPUT NUMBER) --- */}
         <select
           value={categoryId}
           onChange={(e) => setCategoryId(e.target.value)}
@@ -122,7 +119,6 @@ export default function EventCreate() {
           ))}
         </select>
 
-        {/* --- DROPDOWN PEMBICARA (MENGGANTIKAN INPUT NUMBER) --- */}
         <select
           value={pembicaraId}
           onChange={(e) => setPembicaraId(e.target.value)}

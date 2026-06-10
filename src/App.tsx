@@ -31,6 +31,10 @@ import PembicaraIndex from "./pages/dashboard/pembicara/PembicaraIndex";
 import PembicaraCreate from "./pages/dashboard/pembicara/pembicaraCreate";
 import PembicaraEdit from "./pages/dashboard/pembicara/PembicaraEdit";
 
+import UserIndex from "./pages/dashboard/user/UserIndex";
+import UserCreate from "./pages/dashboard/user/UserCreate";
+import UserEdit from "./pages/dashboard/user/UserEdit";
+
 import Biodata from "./pages/dashboard/biodata/Biodata";
 
 function App() {
@@ -78,10 +82,15 @@ function App() {
 
           {/* Biodata */}
           <Route path="/dashboard/biodata" element={<Biodata />} />
+
+          {/* User Management */}
+          <Route path="/dashboard/users" element={<UserIndex />} />
+          <Route path="/dashboard/users/create" element={<UserCreate />} />
+          <Route path="/dashboard/users/edit/:id" element={<UserEdit />} />
         </Route>
       </Route>
     </Routes>
-  );
+  );  
 }
 
 export default App;

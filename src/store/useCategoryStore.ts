@@ -21,7 +21,6 @@ export const useCategoryStore = create<CategoryState>()(
     (set, get) => ({
       categories: [],
 
-      // SET MANUAL
       setCategories: (data) => set({ categories: data }),
 
       // GET DATA

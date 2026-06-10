@@ -43,7 +43,7 @@ export default function Biodata() {
           <div className="border-l-4 border-red-600 pl-3">
             <p className="text-xs text-gray-500">Hobi</p>
             <p className="font-semibold text-white">
-              Ngoding, Writing, Jualan Online
+              Minum Coffe Dan Tidur
             </p>
           </div>
         </div>
